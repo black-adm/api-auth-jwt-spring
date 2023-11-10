@@ -7,7 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.github.blackadm.authjwt.entities.User;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
-    User findById(String id);
-
     User findByEmail(String email);
 }

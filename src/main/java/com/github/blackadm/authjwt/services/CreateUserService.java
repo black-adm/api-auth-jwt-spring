@@ -15,7 +15,7 @@ public class CreateUserService {
     public User execute(User user) {
         User existUser = userRepository.findByEmail(user.getEmail());
 
-        if (existUser == null) {
+        if (existUser != null) {
             throw new Error("Este email já possui cadastro no sistema");
         }
 
