@@ -9,22 +9,18 @@ import com.github.blackadm.authjwt.repositories.UserRepository;
 
 @Service
 public class CreateUserService {
-    
+
     @Autowired
     UserRepository userRepository;
 
-    private BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
     public User execute(User user) {
-        User existUser = userRepository.findByEmail(user.getEmail());
+        if(this.userRepository.findByEmail(user.getEmail()) != null) throw new Error("Email já possui cadastro no sistema!");
 
-        if (existUser != null) {
-            throw new Error("Este email já possui cadastro no sistema");
-        }
+        String hashPassword = new BCryptPasswordEncoder().encode(user.getPassword());
+        User createUser = new User(user.getEmail(), hashPassword);
 
-        user.setPassword(passwordEncoder().encode(user.getPassword()));
-        return userRepository.save(user);
+        return userRepository.save(createUser);
     }
 }
+
+   
