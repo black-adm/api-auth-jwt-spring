@@ -9,5 +9,4 @@ public class AuthjwtApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AuthjwtApplication.class, args);
 	}
-
 }

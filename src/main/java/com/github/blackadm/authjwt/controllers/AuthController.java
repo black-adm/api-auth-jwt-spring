@@ -10,6 +10,8 @@ import com.github.blackadm.authjwt.entities.User;
 import com.github.blackadm.authjwt.repositories.UserRepository;
 import com.github.blackadm.authjwt.services.CreateUserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -21,7 +23,8 @@ public class AuthController {
     CreateUserService createUserService;
 
     @PostMapping
-    public User create(@RequestBody User user) {
+    public User create(@RequestBody @Valid User user) {
         return createUserService.execute(user);
     }
+
 }
