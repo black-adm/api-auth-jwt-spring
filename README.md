@@ -15,7 +15,8 @@ Desenvolvimento de uma **API REST** para criação de usuários e login com *tok
 <img src="https://i.ibb.co/1GhCbSh/jwt.png" />
 </br>
 
-> Como testar o projeto na sua máquina
+## Como testar o projeto na sua máquina
+
 - Clone o projeto com o comando `git clone https://github.com/black-adm/spring-boot-mongodb`.
 
 - Instale as dependências do projeto com o **Maven** e gere as migrations do banco simplesmente rodando o projeto na sua  IDE.
