@@ -1,4 +1,4 @@
-package com.github.blackadm.authjwt.config.security;
+package com.github.blackadm.authjwt.configs.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
+    
     @Autowired
     SecurityFilter securityFilter;
 

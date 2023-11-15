@@ -1,4 +1,4 @@
-package com.github.blackadm.authjwt.config.security;
+package com.github.blackadm.authjwt.configs.security;
 
 import java.io.IOException;
 
@@ -19,8 +19,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
+    
     @Autowired
     TokenService tokenService;
+
     @Autowired
     UserRepository userRepository;
 
