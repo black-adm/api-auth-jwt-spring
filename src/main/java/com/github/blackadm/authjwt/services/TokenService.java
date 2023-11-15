@@ -24,11 +24,11 @@ public class TokenService {
             String token = JWT.create()
                     .withIssuer("authjwt")
                     .withSubject(user.getEmail())
-                    .withExpiresAt(generateExpirationDate())
+                    .withExpiresAt(genExpirationDate())
                     .sign(algorithm);
             return token;
         } catch (JWTCreationException exception) {
-            throw new RuntimeException("Erro ao gerar o token do usuário!", exception);
+            throw new RuntimeException("Error while generating token", exception);
         }
     }
 
@@ -36,17 +36,16 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             return JWT.require(algorithm)
-                    .withIssuer("authjwt")
+                    .withIssuer("auth-api")
                     .build()
                     .verify(token)
                     .getSubject();
-
         } catch (JWTVerificationException exception) {
-            throw new RuntimeException("Erro ao validar o token!", exception);
+            return "";
         }
     }
 
-    private Instant generateExpirationDate() {
+    private Instant genExpirationDate() {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }
 }

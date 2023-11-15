@@ -17,7 +17,7 @@ public class CreateUserService {
         if(this.userRepository.findByEmail(user.getEmail()) != null) throw new Error("Email já possui cadastro no sistema!");
 
         String hashPassword = new BCryptPasswordEncoder().encode(user.getPassword());
-        User createUser = new User(user.getEmail(), hashPassword);
+        User createUser = new User(user.getEmail(), hashPassword, user.getRole());
 
         return userRepository.save(createUser);
     }
